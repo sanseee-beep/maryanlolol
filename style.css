@@ -1,9 +1,56 @@
 body {
-  background: #1F305E;
-  font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif;
+    background: #1A1651;
+    text-align: center;
+    padding: 30px;
 }
 
-h1 {
-  color: blue;
-  text-align: center;
+audio {
+    margin: 20px 0;
 }
+
+.letra {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.linea {
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    font-size: 18px;
+    margin: 15px 0;
+    transform: translateY(10px);
+}
+
+.visible {
+    opacity: 0.4;
+    transform: translateY(0);
+}
+
+.activa {
+    opacity: 1;
+    color: #e60073;
+    font-weight: bold;
+    font-size: 20px;
+}
+.contenedor-letra {
+    max-width: 600px;
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+@media (max-width: 600px) {
+    .contenedor-letra {
+        max-width: 90%;
+        height: 180px;
+    }
+}
+
+
