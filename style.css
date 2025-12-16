@@ -46,17 +46,6 @@ audio {
     padding: 20px;
     border-radius: 20px;
 }
-.layout {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 20px;
-}
-
-.contenido {
-    max-width: 500px;
-}
-
 .gif-lado {
     position: fixed;
     top: 50%;
@@ -71,14 +60,15 @@ audio {
 
 .derecha {
     right: 10px;
-
 }
+
 @media (max-width: 600px) {
     .contenedor-letra {
         max-width: 90%;
         height: 180px;
     }
 }
+ 
 @media (max-width: 768px) {
     .gif-lado,
     .gif-lateral {
