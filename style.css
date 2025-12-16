@@ -57,8 +57,21 @@ audio {
     max-width: 500px;
 }
 
-.gif-lateral {
-    width: 100px;
+.gif-lado {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120px;
+    z-index: 10;
+}
+
+.izquierda {
+    left: 10px;
+}
+
+.derecha {
+    right: 10px;
+
 }
 @media (max-width: 600px) {
     .contenedor-letra {
