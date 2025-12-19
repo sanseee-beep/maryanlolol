@@ -4,6 +4,111 @@ body {
     text-align: center;
     padding: 30px;
 }
+h1 {
+    color: #58b9b9b4; 
+    
+}
+.nav-horizontal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(18, 15, 63, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    z-index: 10000;
+    transition: transform 0.4s ease;
+}
+
+/* Ocultar */
+.nav-horizontal.oculto {
+    transform: translateY(-100%);
+
+.nav-horizontal a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    gap: 80px;
+}}
+.nav-horizontal a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Subrayado animado */
+.nav-horizontal a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 3px;
+    background: #ff9ad5;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+/* Hover */
+.nav-horizontal a:hover::after {
+    width: 100%;
+}
+
+
+.corazon-wrap {
+    position: fixed;
+    opacity: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Posición */
+.corazon-izq {
+    width: 82px;
+    left: 90px;
+    top: calc(30% - 120px);
+}
+
+.corazon-der {
+    width: 82px;
+    right: 90px;
+    top: calc(30% - 120px);
+}
+
+/* Visible   flotar */
+.corazon-visible {
+    opacity: 1;
+    animation: flotar 3s infinite ease-in-out;
+}
+
+.corazon {
+    width: 32px;
+    animation: latido 1.6s infinite ease-in-out;
+}
+
+/*  Latido */
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/*  Flotar */
+@keyframes flotar {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+
 
 audio {
     margin: 20px 0;
@@ -51,16 +156,25 @@ audio {
     top: 50%;
     transform: translateY(-50%);
     width: 120px;
-    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    z-index: 1;
+      pointer-events: none;
+
+}
+.gif-visible {
+    opacity: 1;
+
+}
+.gif-izq {
+    left: 50px;
 }
 
-.izquierda {
-    left: 10px;
+.gif-der {
+    right: 50px;
 }
 
-.derecha {
-    right: 10px;
-}
+
 
 @media (max-width: 600px) {
     .contenedor-letra {
@@ -68,13 +182,15 @@ audio {
         height: 180px;
     }
 }
- 
 @media (max-width: 768px) {
-    .gif-lado,
-    .gif-lateral {
+    .gif-lado {
         display: none;
     }
 }
-
-
-
+@media (max-width: 600px) {
+    .nav-horizontal {
+        gap: 20px;
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+}
