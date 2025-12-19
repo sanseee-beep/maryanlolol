@@ -3,12 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Para maryan </title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="leide.css">
 </head>
 <body>
-<img src="gif.gif" class="gif-lado izquierda">
- <img src="gif.gif" class="gif-lado derecha">
+<nav class="nav-horizontal oculto" id="nav">
+    <a href="#inicio">Spawn</a>
+    <a href="#Lore">Lore</a>
+    <a href="#Galeria">Galeria</a>
+</nav>
+
+</nav>
+ <img id="gifIzq" class="gif-lado gif-izq" src="gif1.gif">
+
+<img id="gifDer" class="gif-lado gif-der" src="gif2.gif">
+
 <h1>Esta canción es para </h1>
+
+<div class="corazon-wrap corazon-izq">
+<img id="corazonIzq" class="corazon-izq" src="colazon.png">    
+</div>
+<div class="corazon-wrap corazon-der">
+<img id="corazonDer" class="corazon-der" src="colazon.png">
+</div>
+
+
+<br>
+
+
 <audio id="audio" controls>
     <source src="Donchano - Steve Lacy.mp3" type="audio/mp3">
 </audio>
@@ -38,37 +59,91 @@
 <div class="linea" data-tiempo="93">I know you know</div>
 </div>
 <script>
-const audio = document.getElementById("audio");
-const lineas = document.querySelectorAll(".linea");
-const letra = document.getElementById("letra");
 
-audio.addEventListener("timeupdate", () => {
-    const tiempoActual = audio.currentTime;
 
-    lineas.forEach((linea, index) => {
-        const tiempoLinea = parseFloat(linea.dataset.tiempo);
-        const siguienteTiempo = lineas[index + 1]
-            ? parseFloat(lineas[index + 1].dataset.tiempo)
-            : Infinity;
+document.addEventListener("DOMContentLoaded", () => {
 
-        if (tiempoActual >= tiempoLinea && tiempoActual < siguienteTiempo) {
-            linea.classList.add("visible", "activa");
+    const audio = document.getElementById("audio");
+    const gifIzq = document.getElementById("gifIzq");
+    const gifDer = document.getElementById("gifDer");
 
-            // scroll automático
-            const desplazamiento = index * 45;
-            letra.style.transform = `translateY(-${desplazamiento}px)`;
+    const corazonIzq = document.querySelector(".corazon-izq");
+    const corazonDer = document.querySelector(".corazon-der");
 
-        } else if (tiempoActual >= tiempoLinea - 1 && tiempoActual < tiempoLinea) {
-            // aparece un poco antes
-            linea.classList.add("visible");
-            linea.classList.remove("activa");
+    let escenaActual = -1;
 
+    const escenasCoro = [
+        { inicio: 0,  fin: 13, izq: "gif2.gif", der: "gif2.gif" },
+        { inicio: 13, fin: 23, izq: "gif4.gif", der: "gif4.gif" },
+        { inicio: 41, fin: 65, izq: "gif1.gif", der: "gif1.gif" },
+        { inicio: 67, fin: 79, izq: "gif3.gif", der: "gif3.gif" },
+        { inicio: 72, fin: 83, izq: "gif5.gif", der: "gif5.gif" },
+        { inicio: 83, fin: 97, izq: "gif7.gif", der: "gif7.gif" }
+    ];
+
+    const lineas = document.querySelectorAll(".linea");
+    const letra = document.querySelector(".letra");
+    const nav = document.getElementById("nav");
+    document.addEventListener("mousemove", (e) => {
+    if (e.clientY < 80) {
+        nav.classList.remove("oculto");
+    } else {
+        nav.classList.add("oculto");
+    }
+});
+document.addEventListener("touchstart", (e) => {
+    if (e.touches[0].clientY < 80) {
+        nav.classList.remove("oculto"); 
+    }
+});
+
+    audio.addEventListener("timeupdate", () => {
+        const t = audio.currentTime;
+
+        /*  Corazones */
+        if (t >= 13 && t <= 98) {
+            corazonIzq.classList.add("corazon-visible");
+            corazonDer.classList.add("corazon-visible");
         } else {
-            // desaparece
-            linea.classList.remove("visible", "activa");
+            corazonIzq.classList.remove("corazon-visible");
+            corazonDer.classList.remove("corazon-visible");
         }
+
+        /*  GFs */
+        let escenaEncontrada = -1;
+        escenasCoro.forEach((escena, i) => {
+            if (t >= escena.inicio && t < escena.fin) escenaEncontrada = i;
+        });
+
+        if (escenaEncontrada !== -1 && escenaEncontrada !== escenaActual) {
+            gifIzq.src = escenasCoro[escenaEncontrada].izq;
+            gifDer.src = escenasCoro[escenaEncontrada].der;
+            gifIzq.classList.add("gif-visible");
+            gifDer.classList.add("gif-visible");
+            escenaActual = escenaEncontrada;
+        }
+
+        if (escenaEncontrada === -1) {
+            gifIzq.classList.remove("gif-visible");
+            gifDer.classList.remove("gif-visible");
+            escenaActual = -1;
+        }
+
+        /* Letras */
+        lineas.forEach((linea, index) => {
+            const tiempo = parseFloat(linea.dataset.tiempo);
+            const siguiente = lineas[index + 1]
+                ? parseFloat(lineas[index + 1].dataset.tiempo)
+                : Infinity;
+
+            linea.classList.toggle("activa", t >= tiempo && t < siguiente);
+            linea.classList.toggle("visible", t >= tiempo - 1 && t < siguiente);
+        });
     });
+
 });
 </script>
+
+
 </body>
 </html>
