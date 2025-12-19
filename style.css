@@ -23,7 +23,7 @@ h1 {
     transition: transform 0.4s ease;
 }
 
-/* Ocultar */
+/* Oculta */
 .nav-horizontal.oculto {
     transform: translateY(-100%);
 
@@ -44,7 +44,7 @@ h1 {
     padding: 5px 0;
 }
 
-/* Subrayado animado */
+/* Subrayado animo */
 .nav-horizontal a::after {
     content: "";
     position: absolute;
@@ -70,7 +70,7 @@ h1 {
     pointer-events: none;
 }
 
-/* Posición */
+/* Posic */
 .corazon-izq {
     width: 82px;
     left: 90px;
@@ -83,7 +83,7 @@ h1 {
     top: calc(30% - 120px);
 }
 
-/* Visible   flotar */
+/* Visible    */
 .corazon-visible {
     opacity: 1;
     animation: flotar 3s infinite ease-in-out;
@@ -101,7 +101,7 @@ h1 {
     100% { transform: scale(1); }
 }
 
-/*  Flotar */
+
 @keyframes flotar {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
