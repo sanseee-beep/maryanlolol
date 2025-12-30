@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería</title>
+    <link rel="stylesheet" href="leide.css">
+</head>
+
+<body>
+
+<div class="galeria-contenedor">
+    <h2>Galería</h2>
+
+    <div class="galeria">
+        <img src="anais.jpeg" class="foto" onclick="abrirLightbox(0)">
+        <img src="darwin.jpeg" class="foto" onclick="abrirLightbox(1)">
+        <img src="gumbal.jpeg" class="foto" onclick="abrirLightbox(2)">
+        <img src="richard.jpeg" class="foto" onclick="abrirLightbox(3)">
+        <img src="nicol.jpeg" class="foto" onclick="abrirLightbox(4)">
+    </div>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <span class="flecha izquierda">&#10094;</span>
+    <img id="lightbox-img">
+    <span class="flecha derecha">&#10095;</span>
+</div>
+
+<script>
+document.querySelector(".flecha.izquierda").addEventListener("click", (e) => {
+    e.stopPropagation();
+    cambiarFoto(-1);
+});
+
+document.querySelector(".flecha.derecha").addEventListener("click", (e) => {
+    e.stopPropagation();
+    cambiarFoto(1);
+});
+
+const fotos = document.querySelectorAll(".foto");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+let indiceActual = 0;
+let inicioX = 0;
+let finX = 0;
+
+// Abrir lightbox
+function abrirLightbox(index) {
+    indiceActual = index;
+    lightboxImg.src = fotos[indiceActual].src;
+    lightbox.classList.add("activo");
+}
+
+// Cambiar imagen
+function cambiarFoto(direccion) {
+    indiceActual += direccion;
+
+    if (indiceActual < 0) indiceActual = fotos.length - 1;
+    if (indiceActual >= fotos.length) indiceActual = 0;
+
+    lightboxImg.src = fotos[indiceActual].src;
+}
+
+// Swipe táctil
+lightbox.addEventListener("touchstart", e => {
+    inicioX = e.touches[0].clientX;
+});
+
+lightbox.addEventListener("touchend", e => {
+    finX = e.changedTouches[0].clientX;
+
+    if (inicioX - finX > 50) cambiarFoto(1);   // izquierda
+    if (finX - inicioX > 50) cambiarFoto(-1);  // derecha
+});
+
+// Cerrar al tocar
+lightbox.addEventListener("click", () => {
+    lightbox.classList.remove("activo");
+});
+</script>
+
+</body>
+</html>
