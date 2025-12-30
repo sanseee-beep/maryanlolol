@@ -203,7 +203,7 @@ h1 {
     font-size: 42px;
     color: #ff9ad5;
     margin-bottom: 30px;
-    text-shadow: 0 0 15px rgba(255, 154, 213, 0.6);
+    text-shadow: 0 0 15px rgba(27, 143, 232, 0.769);
     animation: latido 2s infinite ease-in-out;
 }
 
