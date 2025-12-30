@@ -188,6 +188,47 @@ h1 {
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0); }
 }
+/* ===== CARTA ===== */
+
+.carta-contenedor {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.pregunta {
+    font-size: 42px;
+    color: #ff9ad5;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px rgba(255, 154, 213, 0.6);
+    animation: latido 2s infinite ease-in-out;
+}
+
+.carta {
+    max-width: 600px;
+    background: #fff;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+    animation: flotar 4s infinite ease-in-out;
+}
+
+.carta p {
+    margin-bottom: 20px;
+}
+
+.firma {
+    text-align: right;
+    font-style: italic;
+    color: #555;
+}
+
 /* ===== GALERÍA ===== */
 
 .galeria-contenedor {
