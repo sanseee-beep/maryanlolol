@@ -6,8 +6,84 @@ body {
 }
 h1 {
     color: #58b9b9b4; 
-    
 }
+.play-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9ad5, #b388ff);
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.play-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+}
+.volumen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.volumen span {
+    font-size: 18px;
+    color: white;
+}
+
+#volumen {
+    width: 120px;
+    appearance: none;
+    height: 6px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff9ad5, #b388ff);
+    cursor: pointer;
+}
+
+/* Circul */
+#volumen::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+.progreso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    color: white;
+    font-size: 14px;
+}
+
+#barra {
+    width: 260px;
+    appearance: none;
+    height: 6px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #ff9ad5, #b388ff);
+    cursor: pointer;
+}
+
+/* Circulito */
+#barra::-webkit-slider-thumb {
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
 .nav-horizontal {
     position: fixed;
     top: 0;
@@ -23,7 +99,7 @@ h1 {
     transition: transform 0.4s ease;
 }
 
-/* Oculta */
+/* Ocultar */
 .nav-horizontal.oculto {
     transform: translateY(-100%);
 
@@ -44,7 +120,7 @@ h1 {
     padding: 5px 0;
 }
 
-/* Subrayado animo */
+/* Subrayado animado */
 .nav-horizontal a::after {
     content: "";
     position: absolute;
@@ -70,7 +146,7 @@ h1 {
     pointer-events: none;
 }
 
-/* Posic */
+/* Posición */
 .corazon-izq {
     width: 82px;
     left: 90px;
@@ -83,7 +159,7 @@ h1 {
     top: calc(30% - 120px);
 }
 
-/* Visible    */
+/* Visible   flotar */
 .corazon-visible {
     opacity: 1;
     animation: flotar 3s infinite ease-in-out;
@@ -101,7 +177,7 @@ h1 {
     100% { transform: scale(1); }
 }
 
-
+/*  Flotar */
 @keyframes flotar {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -194,3 +270,5 @@ audio {
         flex-wrap: wrap;
     }
 }
+
+
