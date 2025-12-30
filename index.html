@@ -3,14 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Para maryan </title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="leide.css">
 </head>
 <body>
 <nav class="nav-horizontal oculto" id="nav">
     <a href="#inicio">Spawn</a>
     <a href="#Lore">Lore</a>
     <a href="#Galeria">Galeria</a>
-</nav>
 
 </nav>
  <img id="gifIzq" class="gif-lado gif-izq" src="gif1.gif">
@@ -18,6 +17,25 @@
 <img id="gifDer" class="gif-lado gif-der" src="gif2.gif">
 
 <h1>Esta canción es para </h1>
+<button id="playBtn" class="play-btn">▶</button>
+<div class="volumen">
+    <span>🔊</span>
+    <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.7">
+</div>
+<div class="progreso">
+    <span id="tiempo-actual">0:00</span>
+
+    <input type="range" id="barra" min="0" max="100" value="0">
+
+    <span id="tiempo-total">0:00</span>
+</div>
+
+
+
+<audio id="audio">
+    <source src="Donchano - Steve Lacy.mp3" type="audio/mp3">
+</audio>
+
 
 <div class="corazon-wrap corazon-izq">
 <img id="corazonIzq" class="corazon-izq" src="colazon.png">    
@@ -25,7 +43,11 @@
 <div class="corazon-wrap corazon-der">
 <img id="corazonDer" class="corazon-der" src="colazon.png">
 </div>
+
+
 <br>
+
+
 <audio id="audio" controls>
     <source src="Donchano - Steve Lacy.mp3" type="audio/mp3">
 </audio>
@@ -62,6 +84,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("audio");
     const gifIzq = document.getElementById("gifIzq");
     const gifDer = document.getElementById("gifDer");
+    const btn = document.getElementById("playBtn");
+    const controlVolumen = document.getElementById("volumen");
+   
+
+const barra = document.getElementById("barra");
+const tiempoActual = document.getElementById("tiempo-actual");
+const tiempoTotal = document.getElementById("tiempo-total");
+
+
+function formatoTiempo(segundos) {
+    const min = Math.floor(segundos / 60);
+    const sec = Math.floor(segundos % 60);
+    return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+}
+
+/* Duración */
+audio.addEventListener("loadedmetadata", () => {
+    tiempoTotal.textContent = formatoTiempo(audio.duration);
+});
+
+
+audio.addEventListener("timeupdate", () => {
+    const progreso = (audio.currentTime / audio.duration) * 100;
+    barra.value = progreso;
+    tiempoActual.textContent = formatoTiempo(audio.currentTime);
+});
+
+
+barra.addEventListener("input", () => {
+    audio.currentTime = (barra.value / 100) * audio.duration;
+});
+
+
+
+audio.volume = 0.7;
+
+controlVolumen.addEventListener("input", () => {
+    audio.volume = controlVolumen.value;
+});
+
+
+
+btn.addEventListener("click", () => {
+    if (audio.paused) {
+        audio.play();
+        btn.textContent = "❚❚";
+    } else {
+        audio.pause();
+        btn.textContent = "▶";
+    }
+});
+
+
 
     const corazonIzq = document.querySelector(".corazon-izq");
     const corazonDer = document.querySelector(".corazon-der");
