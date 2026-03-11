@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Para maryan </title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="leide.css">
 </head>
 <body>
-
 <nav class="nav-horizontal oculto" id="nav">
     <a href="index.html">Spawn</a>
-    <a href="lore.html">Lore</a>
+    <a href="carta.html">Lore</a>
     <a href="galeria.html">Galeria</a>
 
 </nav>
@@ -17,7 +16,7 @@
 
 <img id="gifDer" class="gif-lado gif-der" src="gif2.gif">
 
-<h1> para Maryan </h1>
+<h1>Esta canción es para </h1>
 <button id="playBtn" class="play-btn">▶</button>
 <div class="volumen">
     <span>🔊</span>
@@ -38,15 +37,17 @@
 </audio>
 
 
-<div class="corazon-wrap corazon-izq">
-<img id="corazonIzq" class="corazon-izq" src="colazon.png">    
+<div class="corazon-wrap">
+<img id="corazonIzq" class="corazon corazon-izq" src="colazon.png">    
 </div>
-<div class="corazon-wrap corazon-der">
-<img id="corazonDer" class="corazon-der" src="colazon.png">
+
+<div class="corazon-wrap">
+<img id="corazonDer" class="corazon corazon-der" src="colazon.png">
 </div>
 
 
 <br>
+
 
 
 
@@ -75,10 +76,6 @@
 <div class="linea" data-tiempo="89">Hey, don't ya know?</div>
 <div class="linea" data-tiempo="93">I know you know</div>
 </div>
-    <p class="mensaje">
-Hice esta página porque eres muy especial para mí.
-Cada foto y esta canción me recuerdan lo mucho que te quiero.
-</p>
 <script>
 
 
@@ -141,8 +138,8 @@ btn.addEventListener("click", () => {
 
 
 
-    const corazonIzq = document.querySelector(".corazon-izq");
-    const corazonDer = document.querySelector(".corazon-der");
+  const corazonIzq = document.getElementById("corazonIzq");
+const corazonDer = document.getElementById("corazonDer");
 
     let escenaActual = -1;
 
@@ -219,5 +216,7 @@ document.addEventListener("touchstart", (e) => {
 </script>
 
 
+</body>
+</html>
 </body>
 </html>
