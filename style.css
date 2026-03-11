@@ -465,3 +465,34 @@ box-shadow: 0 25px 70px rgba(27,143,232,0.8);
 body.morado .destacada{
 box-shadow: 0 25px 70px rgba(176,108,255,0.8);
 }
+.carta-contenedor{
+max-width:700px;
+margin:80px auto;
+display:flex;
+flex-direction:column;
+gap:30px;
+}
+
+.nota{
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.fecha{
+font-size:14px;
+color:#888;
+font-weight:bold;
+}
+
+.carta{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.firma{
+margin-top:20px;
+font-style:italic;
+}
