@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<button id="temaBtn" class="tema-btn"> Cambiar color</button>
 <nav class="nav-horizontal oculto" id="nav">
     <a href="index.html">Spawn</a>
     <a href="lore.html">Lore</a>
@@ -83,6 +84,24 @@ Cada foto y esta canción me recuerdan lo mucho que te quiero.
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const temaBtn = document.getElementById("temaBtn");
+
+const temas = ["tema-azul","tema-rosa","tema-morado"];
+let temaActual = 0;
+
+temaBtn.addEventListener("click", () => {
+
+document.body.classList.remove(temas[temaActual]);
+
+temaActual++;
+
+if(temaActual >= temas.length){
+temaActual = 0;
+}
+
+document.body.classList.add(temas[temaActual]);
+
+}
     const audio = document.getElementById("audio");
     const gifIzq = document.getElementById("gifIzq");
     const gifDer = document.getElementById("gifDer");
