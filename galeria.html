@@ -6,19 +6,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="azul">
 
-<div class="galeria-contenedor">
-    <h2>Galería</h2>
-
-    <div class="galeria">
-        <img src="anais.jpeg" class="foto" onclick="abrirLightbox(0)">
-        <img src="darwin.jpeg" class="foto" onclick="abrirLightbox(1)">
-        <img src="gumbal.jpeg" class="foto" onclick="abrirLightbox(2)">
-        <img src="richard.jpeg" class="foto" onclick="abrirLightbox(3)">
-        <img src="nicol.jpeg" class="foto" onclick="abrirLightbox(4)">
-    </div>
+<div class="filtros">
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('azul')">Azul</button>
+<button onclick="filtrar('morado')">Morado</button>
 </div>
+    <h2>Galería</h2>
+    
+
+   <div class="galeria">
+    <img src="imagenes/azul/steven.jpeg" class="foto azul destacada" onclick="abrirLightbox(0)">
+
+<img src="imagenes/azul/anais.jpeg" class="foto azul" onclick="abrirLightbox(11)">
+<img src="imagenes/azul/darwin.jpeg" class="foto azul" onclick="abrirLightbox(1)">
+<img src="imagenes/azul/gumbal.jpeg" class="foto azul" onclick="abrirLightbox(2)">
+<img src="imagenes/azul/nicol.jpeg" class="foto azul" onclick="abrirLightbox(3)">
+<img src="imagenes/azul/richard.jpeg" class="foto azul" onclick="abrirLightbox(4)">
+<img src="imagenes/azul/DSCN3311.JPG" class="foto azul" onclick="abrirLightbox(5)">
+<img src="imagenes/azul/DSCN3312.JPG" class="foto azul" onclick="abrirLightbox(6)">
+<img src="imagenes/azul/DSCN3313.JPG" class="foto azul" onclick="abrirLightbox(7)">
+<img src="imagenes/azul/DSCN3317.JPG" class="foto azul" onclick="abrirLightbox(8)">
+<img src="imagenes/azul/DSCN3299.JPG" class="foto azul" onclick="abrirLightbox(9)">
+<img src="imagenes/azul/DSCN3300.JPG" class="foto azul" onclick="abrirLightbox(10)">
+<img src="imagenes/azul/anais.jpeg" class="foto azul" onclick="abrirLightbox(11)">
+<img src="imagenes/morado/DSCN3298.JPG" class="foto morado" onclick="abrirLightbox(12)">
+
+</div>
+
 
 <div id="lightbox" class="lightbox">
     <span class="flecha izquierda">&#10094;</span>
@@ -27,6 +43,37 @@
 </div>
 
 <script>
+    function filtrar(color){
+
+const fotos = document.querySelectorAll(".foto");
+
+fotos.forEach(foto => {
+
+if(color === "todos"){
+foto.style.display = "block";
+}
+else if(foto.classList.contains(color)){
+foto.style.display = "block";
+}
+else{
+foto.style.display = "none";
+}
+
+});
+
+/* CAMBIAR COLOR DE LA PAGINA */
+document.body.classList.remove("azul","morado");
+
+if(color === "azul"){
+document.body.classList.add("azul");
+}
+
+if(color === "morado"){
+document.body.classList.add("morado");
+}
+
+}
+ 
 document.querySelector(".flecha.izquierda").addEventListener("click", (e) => {
     e.stopPropagation();
     cambiarFoto(-1);
@@ -70,15 +117,19 @@ lightbox.addEventListener("touchstart", e => {
 lightbox.addEventListener("touchend", e => {
     finX = e.changedTouches[0].clientX;
 
-    if (inicioX - finX > 50) cambiarFoto(1);   // izquierda
-    if (finX - inicioX > 50) cambiarFoto(-1);  // derecha
+    if (inicioX - finX > 50) cambiarFoto(1);   
+    if (finX - inicioX > 50) cambiarFoto(-1); 
 });
 
-// Cerrar al tocar
+// Cerrar
 lightbox.addEventListener("click", () => {
     lightbox.classList.remove("activo");
+    
 });
+
+
 </script>
 
 </body>
 </html>
+
