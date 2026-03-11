@@ -496,3 +496,7 @@ box-shadow:0 10px 25px rgba(0,0,0,0.2);
 margin-top:20px;
 font-style:italic;
 }
+img{
+max-width:100%;
+height:auto;
+}
