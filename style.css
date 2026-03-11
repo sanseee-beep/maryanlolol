@@ -299,7 +299,9 @@ box-shadow: 0 20px 50px rgba(176, 108, 255, 0.8);
 }
 
 .lightbox img {
-    user-select: none;
+   
+max-height:90%;
+ user-select: none;
     -webkit-user-drag: none;
 }
 .flecha {
