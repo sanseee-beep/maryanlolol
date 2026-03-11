@@ -84,22 +84,12 @@ Cada foto y esta canción me recuerdan lo mucho que te quiero.
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const temaBtn = document.getElementById("temaBtn");
 
-const temas = ["tema-azul","tema-rosa","tema-morado"];
-let temaActual = 0;
 
-temaBtn.addEventListener("click", () => {
 
-document.body.classList.remove(temas[temaActual]);
 
-temaActual++;
 
-if(temaActual >= temas.length){
-temaActual = 0;
-}
 
-document.body.classList.add(temas[temaActual]);
 
 }
     const audio = document.getElementById("audio");
